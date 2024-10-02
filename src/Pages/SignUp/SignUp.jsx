@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const SignUp = () => {
     return (
         <div className="hero bg-base-200 h-screen w-full bg-gradient-to-r from-[#8d7673] via-[#dbc774] to-[#1E90FF]">
@@ -42,6 +44,7 @@ const SignUp = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>
                         </div>
+                        <h2 className="text-center font-serif text-xs my-4">Already have an account <Link className="text-red-400" to='/login'>Please Login</Link></h2>
                     </form>
                 </div>
                 <div className="hidden md:block transition-transform duration-300 ease-in-out transform hover:scale-110">
