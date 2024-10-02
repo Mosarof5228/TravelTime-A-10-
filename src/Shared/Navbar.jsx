@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const NavInfo = <>
-        <li><Link className="btn btn-sm mx-2 hover:bg-yellow-500">Home</Link></li>
-        <li><Link className="btn btn-sm mx-2 hover:bg-yellow-500">All Tourists Spot</Link></li>
-        <li><Link className="btn btn-sm mx-2 hover:bg-yellow-500">Add Tourists Spot</Link></li>
-        <li><Link className="btn btn-sm mx-2 hover:bg-yellow-500">My List</Link></li>
+        <li><Link className="btn  bg-[#C6C184]  btn-sm mx-2 hover:bg-yellow-500">Home</Link></li>
+        <li><Link className="btn  bg-[#C6C184] btn-sm mx-2 hover:bg-yellow-500">All Tourists Spot</Link></li>
+        <li><Link className="btn  bg-[#C6C184] btn-sm mx-2 hover:bg-yellow-500">Add Tourists Spot</Link></li>
+        <li><Link className="btn  bg-[#C6C184] btn-sm mx-2 hover:bg-yellow-500">My List</Link></li>
 
     </>
     return (
-        <div className="navbar bg-base-100 px-10">
+        <div className="navbar bg-base-100  bg-[#aeb0f3] px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -43,7 +43,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-sm hover:bg-yellow-500">Login</a>
+                <Link className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Login</Link>
+                <Link to='/signup' className="btn btn-sm  bg-[#C6C184] hover:bg-yellow-500">Sign Up</Link>
             </div>
         </div>
     );

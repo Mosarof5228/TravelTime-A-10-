@@ -1,5 +1,6 @@
 import Home from "../Home/Home";
 import Root from "../Root/Root";
+import SignUp from "../Pages/SignUp/SignUp";
 
 import {
     createBrowserRouter,
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/signup',
+                element: <SignUp></SignUp>
             }
         ]
     },
