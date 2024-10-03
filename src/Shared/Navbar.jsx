@@ -1,7 +1,12 @@
 import logo from "/src/assets/travel time second logo.png";
+import { signOut } from "firebase/auth";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { auth } from "../Firebase/Firebase.config";
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
     const NavInfo = <>
         <li><Link className="btn  bg-[#C6C184]  btn-sm mx-2 hover:bg-yellow-500">Home</Link></li>
         <li><Link className="btn  bg-[#C6C184] btn-sm mx-2 hover:bg-yellow-500">All Tourists Spot</Link></li>
@@ -9,6 +14,15 @@ const Navbar = () => {
         <li><Link className="btn  bg-[#C6C184] btn-sm mx-2 hover:bg-yellow-500">My List</Link></li>
 
     </>
+    const handleLogOut = () => {
+        signOut(auth)
+            .then(() => {
+                console.log("Logout Success")
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <div className="navbar bg-base-100  bg-[#aeb0f3] px-10">
             <div className="navbar-start">
@@ -43,8 +57,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Login</Link>
-                <Link to='/signup' className="btn btn-sm  bg-[#C6C184] hover:bg-yellow-500">Sign Up</Link>
+                {
+                    user ? <button onClick={handleLogOut} to='/logOut' className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Log Out</button> : <div>
+                        <Link to='/login' className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Login</Link>
+                        <Link to='/signup' className="btn btn-sm  bg-[#C6C184] hover:bg-yellow-500">Sign Up</Link>
+                    </div>
+                }
+
             </div>
         </div>
     );

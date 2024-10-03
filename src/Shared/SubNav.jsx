@@ -21,9 +21,13 @@ const SubNav = () => {
                 }</span> </span> </h1>
                 <div className="avatar">
                     <div className="ring-primary ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
-                        <img src={user?.photoURL} />
+                        <img
+                            src={user?.photoURL ? user.photoURL : "https://i.ibb.co.com/XVGQfZh/image.jpg"} // Fallback to a placeholder image
+                            alt="User Avatar"
+                        />
                     </div>
                 </div>
+
             </div>
         </div>
 
