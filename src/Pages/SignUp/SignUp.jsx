@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -54,6 +55,10 @@ const SignUp = () => {
         userCreate(email, password)
             .then(result => {
                 console.log(result.user)
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo
+                })
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -64,7 +69,14 @@ const SignUp = () => {
                 return;
             })
             .catch(error => {
-                console.log(error.message)
+                const message = error.message;
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: message,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+                return;
             })
 
 
@@ -108,7 +120,7 @@ const SignUp = () => {
                             <div className="form-control pt-2">
                                 <label className="cursor-pointer label">
 
-                                    <input type="checkbox" defaultValue={false} name="terms" className="checkbox checkbox-secondary" />
+                                    <input type="checkbox" defaultValue={FontFaceSetLoadEvent} name="terms" className="checkbox checkbox-secondary" />
                                     <span className="label-text"><a className="text-blue-500">Please Accept Terms And Condition</a></span>
                                 </label>
                             </div>
