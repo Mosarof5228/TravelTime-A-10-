@@ -43,7 +43,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Login</Link>
+                <Link to='/login' className="btn btn-sm mx-2 bg-[#C6C184] hover:bg-yellow-500">Login</Link>
                 <Link to='/signup' className="btn btn-sm  bg-[#C6C184] hover:bg-yellow-500">Sign Up</Link>
             </div>
         </div>
