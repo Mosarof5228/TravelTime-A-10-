@@ -23,6 +23,7 @@ const Navbar = () => {
                 console.log(error.message)
             })
     }
+
     return (
         <div className="navbar bg-base-100  bg-[#aeb0f3] px-10">
             <div className="navbar-start">

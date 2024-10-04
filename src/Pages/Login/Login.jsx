@@ -1,8 +1,10 @@
+import "react-toastify/dist/ReactToastify.css";
 import imgLogin from "/src/assets/login-removebg-preview.png";
 import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { auth } from "../../Firebase/Firebase.config";
 
@@ -26,11 +28,20 @@ const Login = () => {
                 console.log(error.message)
             })
     };
+    const toastNotify = () => {
+        toast.success("Login Successfull!", {
+            position: "top-right"
+        });
+
+    }
 
     const handleGoggle = () => {
         signInWithPopup(auth, goggleProvider)
             .then(result => {
                 console.log(result.user);
+                if (result.user) {
+                    toastNotify()
+                }
             })
             .catch(error => {
                 console.log(error.message)
@@ -41,6 +52,9 @@ const Login = () => {
         signInWithPopup(auth, githubProvider)
             .then(result => {
                 console.log(result.user);
+                if (result.user) {
+                    toastNotify()
+                }
             })
             .catch(error => {
                 console.log(error.message)
@@ -91,6 +105,7 @@ const Login = () => {
                         </div>
                         <div className="flex gap-4 text-4xl items-center justify-center mt-2">
                             <span onClick={handleGoggle} className="text-[#4180F5]">< FaGoogle /></span>
+                            <ToastContainer />
 
                             <span onClick={handleGithubLogin}>
                                 < FaGithub />
