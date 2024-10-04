@@ -1,10 +1,15 @@
 import imgLogin from "/src/assets/login-removebg-preview.png";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { auth } from "../../Firebase/Firebase.config";
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
+    const goggleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -22,6 +27,25 @@ const Login = () => {
             })
     };
 
+    const handleGoggle = () => {
+        signInWithPopup(auth, goggleProvider)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
     return (
         <div className="hero bg-base-200 h-screen w-full bg-gradient-to-r from-[#8d7673] via-[#dbc774] to-[#1E90FF] relative">
 
@@ -37,7 +61,7 @@ const Login = () => {
             {/* Form Overlay */}
             <div className="hero-content relative z-10 flex flex-col justify-center items-center w-full h-full">
 
-                <div className="card bg-white bg-opacity-90 w-full max-w-md p-10 shadow-2xl rounded-lg">
+                <div className="card bg-white bg-opacity-90 w-full max-w-md p-5 shadow-2xl rounded-lg">
                     <div className="text-center lg:text-left">
                         <h1 className="text-4xl font-bold transform transition-transform duration-300 ease-in-out hover:scale-110">
                             Please Login!~
@@ -65,7 +89,13 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary w-full">Login</button>
                         </div>
+                        <div className="flex gap-4 text-4xl items-center justify-center mt-2">
+                            <span onClick={handleGoggle} className="text-[#4180F5]">< FaGoogle /></span>
 
+                            <span onClick={handleGithubLogin}>
+                                < FaGithub />
+                            </span>
+                        </div>
                         <h2 className="text-center font-serif text-xs my-4">
                             Are You New Here? <Link className="text-red-400" to="/signup">Please Sign Up</Link>
                         </h2>

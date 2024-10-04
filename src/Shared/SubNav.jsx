@@ -4,7 +4,6 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const SubNav = () => {
     const { user } = useContext(AuthContext);
-    console.log(user)
     return (
         <div className="navbar bg-[#5D62FF] text-primary-content text-[#dbd7d7]">
             <button className="btn btn-ghost text-xl font-bold"><span className="text-[#dbd7d7]">Travel</span><span className="text-[#FAA61A] -ml-2">Time</span></button>
