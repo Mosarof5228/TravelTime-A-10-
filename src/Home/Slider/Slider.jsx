@@ -1,18 +1,12 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/swiper-bundle.min.css";
-import "./styles.css";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Install Swiper modules
-
-
 const Slider = () => {
-    SwiperCore.use([Autoplay, Navigation, Pagination]);
     return (
-        <>
+        <div className="w-[100%] mt-[-20px]" style={{ width: '100%', height: '500px' }}> {/* Ensure parent has size */}
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -24,20 +18,31 @@ const Slider = () => {
                     clickable: true,
                 }}
                 navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
+                modules={[Autoplay, Pagination, Navigation]} // Use Swiper modules
                 className="mySwiper"
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                <SwiperSlide className="w-full">
+                    <img className="w-[100%]" src="/src/assets/3.jpeg" alt="" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="/src/assets/4.jpeg" alt="" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="/src/assets/travel time second logo.png" alt="" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="/src/assets/travel time second logo.png" alt="" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src="/src/assets/travel time second logo.png" alt="" />
+                </SwiperSlide>
+
             </Swiper>
-        </>
+        </div>
     );
 };
 
